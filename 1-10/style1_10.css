@@ -1,0 +1,43 @@
+/* 全体設定 */
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    background-color: #fafafa;
+}
+
+/* h1タイトル */
+h1 {
+    text-align: center;
+    color: #007ACC;
+    margin-bottom: 40px;
+}
+
+/* 問1：文字の大きさ */
+.font-size p {
+    font-size: 40px;
+ }
+
+/* 問2：文字の種類 */
+.font-family p {
+    font-family: serif;
+}
+
+/* 問3：背景色 */
+.background-color p {
+    background-color: #ff0
+}
+
+/* 問4：幅・高さ */
+.size p {
+    height: 100px;
+    width: 400px;
+    background-color: #dddddd;
+}
+
+/* 問5：その他プロパティ */
+.other-properties .box {
+    box-sizing: border-box;
+    margin: 20px;
+    padding: 15px;
+    border: 2px solid black;
+}
