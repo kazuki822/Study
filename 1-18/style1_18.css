@@ -1,0 +1,44 @@
+body {
+    min-height: 100%;
+    height: 100%;
+}
+.wrapper {
+    width: 400px;
+    margin: 450px;
+}
+.header {
+    height: 100px;
+    background-color: #ffce7a
+}
+.left {
+    float: left;
+    width: 150px;
+    height: 250px;
+    background-color: #9dddf4;
+}
+.right {
+    float: right;
+    width: 100px;
+    height: 150px;
+    background-color: #f89c9c;
+}
+.center1 {
+    width: 150px;
+    height: 50px;
+    background-color: #c2ffc8
+}
+.center2 {
+    width: 150px;
+    height: 100px;
+    background-color: #ffc2c5
+}
+.center3 {
+    width: 250px;
+    height: 100px;
+    background-color: #fff083;
+}
+.footer {
+    width: 400px;
+    height: 100px;
+    background: #bea5ff
+}
