@@ -1,0 +1,28 @@
+body {
+    min-height: 100%;
+    height: 100%;
+    width: 350px;
+}
+.wrapper {
+    width: 160px;
+}
+.header {
+    height: 100px;
+    width: 350px;
+    background-color: #ffce7a
+}
+.left {
+    height: 250px;
+    width: 150px;
+    background-color: #9dddf4;
+}
+.main {
+    height: 250px;
+    width: 250px;
+    background-color: #c2ffc8
+}
+.footer {
+    height: 100px;
+    width: 400px;
+    background-color: #bea5ff;
+}
