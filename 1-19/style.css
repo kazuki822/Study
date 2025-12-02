@@ -16,13 +16,12 @@
 }
 .flex-vertical {
     display: flex;
-    gap: 10px;
     height: 60px;
     width: 160px;
     background-color: #FFF;
 }
 .flex-box {
-    float: center;
+    margin: 5px;
     width: 40px;
     height: 40px;
     background: #C2FFC8;
@@ -38,30 +37,39 @@
     height: 250px;
     float: right;
     background: #C2FFC8;
-    padding: 40px;
     box-sizing: border-box;
+}
+.box {
+    margin: 5px 5px 5px 5px;
+    width: 140px;
+    height: 40px;
+    background-color: #FFC2C5;
 }
 .right-top {
     width: 150px;
     height: 50px;
-    background: #FFC2C5;
-    margin: 40px 60px 160px 40px;
+    background: #FFF;
+    margin: 40px 60px 10px 40px;
 }
 .right-center {
     width: 150px;
     height: 50px;
-    background: #FFC2C5;
-    margin: 10px 60px 100px 40px;
+    background: #FFF;
+    margin: 0 60px 10px 40px;
 }
 .righr-bottom {
     width: 150px;
     height: 50px;
-    background: #FFC2C5;
-    margin: 10px 60px 40px 40px;
+    background: #FFF;
+    margin: 0 60px 40px 40px;
 }
 .footer {
     width: 400px;
     height: 100px;
     background: #BEA5FF;
     clear: both;
+}
+* {
+    margin: 0;
+    padding: 0;
 }
