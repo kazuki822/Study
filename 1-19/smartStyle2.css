@@ -16,24 +16,41 @@
     .header {
         width: 200px;
         height: 200px;
+        padding-right: 0;
     }
+    .flex-vertical {
+        width: 60px;
+        height: 160px;
+        margin: 0 70px;
+        flex-direction: column;
+    }
+    .flex-box2 {
+        margin: 10px 10px;
+    }
+    
     .left {
         width: 200px;
         height: 100px;
+        float: none;
     }
     .right {
         width: 200px;
         height: 200px;
         float: none;
     }
+    .aaa {
+        width: 140px;
+        padding: 20px;
+
+    }
     .right-top {
-        margin: 20px 20px 10px 30px;
+        margin: 0px 0px 10px 10px;
     }
     .right-center {
-        margin: 0 20px 10px 30px;
+        margin: 0 20px 10px 10px;
     }
-    .right-bottom {
-        margin: 0 20px 10px 30px;
+    .righr-bottom {
+        margin: 0 20px 10px 10px;
     }
     .footer {
         width: 200px;
