@@ -15,12 +15,27 @@
     }
     .header {
         width: 200px;
+        height: 200px;
     }
     .left {
         width: 200px;
-        height: auto;
+        height: 100px;
     }
     .right {
-        
+        width: 200px;
+        height: 200px;
+        float: none;
+    }
+    .right-top {
+        margin: 20px 20px 10px 30px;
+    }
+    .right-center {
+        margin: 0 20px 10px 30px;
+    }
+    .right-bottom {
+        margin: 0 20px 10px 30px;
+    }
+    .footer {
+        width: 200px;
     }
 }
