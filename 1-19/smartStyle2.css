@@ -1,0 +1,26 @@
+@media screen and (min-width: 767px) {
+    .contents {
+    max-width: 767px; 
+    width: 100%; 
+    margin-left: auto; 
+    margin-right: auto; 
+    }
+}
+@media screen and (max-width: 479px) {
+    body {
+        width: 200px;
+    }
+    .wrapper {
+        width: 200px;
+    }
+    .header {
+        width: 200px;
+    }
+    .left {
+        width: 200px;
+        height: auto;
+    }
+    .right {
+        
+    }
+}
