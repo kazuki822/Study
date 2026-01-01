@@ -32,7 +32,8 @@ class Bike {
 	String type;
 	Boolean state;
 
-	// 引数なしのコンストラクタ
+	// 引数なしのコンストラクタ 
+	
 	public Bike() {
 		this.color = "未設定";
 		this.type = "250cc"; // デフォルト値として250ccを設定
