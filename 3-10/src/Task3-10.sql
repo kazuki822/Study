@@ -4,12 +4,11 @@
 SELECT * from staff WHERE section='経理部';
 
 -- 2. 在庫(Stocksテーブル)の在庫数(Quantity)が10以上25未満のものを抽出して下さい。
-SELECT A.total FROM order_header A WHERE A.total  > 5000
-INTERSECT
-SELECT B.total  FROM order_header B WHERE B.total  < 10000;
+SELECT goodscode,quantity FROM stocks
+WHERE quantity >= 10 AND quantity  < 25;
 
 -- 3. INTERSECT演算子を使用して、Order_Headerテーブルで合計値(Total)が5000以上10000未満のものを抽出して下さい。
-SELECT A.total FROM order_header A WHERE A.total  > 5000
+SELECT A.total FROM order_header A WHERE A.total  >= 5000
 INTERSECT
 SELECT B.total  FROM order_header B WHERE B.total  < 10000;
 
