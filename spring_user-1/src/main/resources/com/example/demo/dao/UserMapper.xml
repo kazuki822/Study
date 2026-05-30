@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.UserMapper">
+<!-- 科目情報 全検索 -->
+<select id="findAll" resultType="com.example.demo.entity.UserEntity">
+SELECT
+      u.id,
+      u.name,
+      u.address,
+      u.phone,
+      u.email,
+      u.gender_id,
+      g.gender_name,
+      u.delete_flg,
+      u.update_date,
+      u.create_date
+FROM
+  user_tb u
+LEFT JOIN m_gender g ON u.gender_id = g.gender_id
+  WHERE u.delete_flg = 0
+  ORDER BY u.id
+
+</select>
+</mapper>
