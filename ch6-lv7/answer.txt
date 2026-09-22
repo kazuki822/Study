@@ -1,0 +1,20 @@
+【設問1】
+rowsが50,000になっているのは、customer_id = 2048 に該当する注文が約50,000件あるためである。
+現在はcustomer_idのインデックスしかないため、まず50,000件の注文を検索する必要がある。
+
+【設問2】
+Using whereが表示されるのは、customer_idのインデックスだけではstatusまで検索できないため。
+そのため、customer_id = 2048 の注文を50,000件取得した後、その中からstatusが「処理中」のものを確認。
+
+【設問3】
+customer_idとstatusを一緒に検索できる複合インデックスを作成する。
+
+CREATE INDEX idx_cust_status
+ON orders (customer_id, status);
+
+【設問4】
+customer_id → statusの順番が重要なのは、今回のSQLがcustomer_idとstatusの両方を条件にしているため。
+customer_idを先にすることで、customer_id = 2048の注文に絞り込み、その中からstatus = '処理中'を検索できる。
+
+逆にstatus → customer_idの順番にすると、statusから先に検索することになるため、今回のようにcustomer_idで大きく絞り込める場合には効率が悪くなる可能性がある。
+そのため、今回はcustomer_id → statusの順番が適している。
