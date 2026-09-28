@@ -1,0 +1,46 @@
+【設問1】
+
+ordersはtypeがALLなので、800万件のデータを全件検索している。
+
+membersもtypeがALLなので、50万件のデータを全件検索している。
+
+order_itemsもtypeがALLなので、2,400万件のデータを全件検索している。
+
+このように大量のデータを検索しているため、処理に時間がかかっている。
+
+【設問2】
+
+Using temporaryとUsing filesortが発生しているのは、ORDER BYでデータの並び替えを行っているためである。
+
+order_dateとnameの順番に並び替えるため、テーブルや追加のソート処理が必要になっている。
+
+【設問3】
+
+① ordersテーブル
+order_dateとstatusの複合インデックスを作成する。
+注文日とステータスで検索するため。
+
+② membersテーブル
+idにインデックスを作成する。
+ordersとmembersをmember_idとidで結合するため。
+
+③ order_itemsテーブル
+order_idにインデックスを作成する。
+ordersとorder_itemsをorder_idで結合するため。
+
+【設問4】
+
+CREATE INDEX idx_order_date_status
+ON orders (order_date, status);
+
+CREATE INDEX idx_member_id
+ON members (id);
+
+CREATE INDEX idx_order_id
+ON order_items (order_id);
+
+【設問5】
+
+orders：ALL → range
+members：ALL → eq_ref
+order_items：ALL → ref
