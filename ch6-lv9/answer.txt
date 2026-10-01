@@ -1,0 +1,31 @@
+【設問1】
+
+categoriesのtypeがALLなのは、nameを検索するためのインデックスがない。そのため、80件すべてを確認して「家電」を探している。
+productsのtypeがALLなのは、priceやis_activeを検索するためのインデックスがない。そのため、30万件すべてを確認している。
+
+【設問2】
+
+stocksのtypeがALLなのは、quantityとreorder_pointを使って検索しているが、検索するためのインデックスがない。
+idx_warehouseはwarehouse_idに対するインデックスだが、今回の検索条件はquantity < reorder_pointなので、検索条件に合わず使われていない。
+
+【設問3】
+
+SQL-Aでは、カテゴリ名と商品の価格・有効状態を検索するため、次のインデックスを追加する。
+
+CREATE INDEX idx_category_name
+ON categories (name);
+
+CREATE INDEX idx_product_price_active
+ON products (price, is_active);
+
+【設問4】
+
+SQL-Bでは、stocksとproductsをproduct_idで結合するため、次のインデックスを追加する。
+
+CREATE INDEX idx_stock_product
+ON stocks (product_id);
+
+【設問5】
+
+共通点は、検索や結合に使われるカラムにインデックスを追加して、全件検索を減らすこと。
+相違点は、SQL-Aは検索条件で使うカラムにインデックスを追加するのに対して、SQL-Bはテーブルを結合するproduct_idなどのカラムも重要になる点。
