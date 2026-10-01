@@ -1,0 +1,77 @@
+【設問1】
+
+N+1問題は、最初に注文を取得した後、注文1件ごとに会員情報を取得するSQLを実行していることが原因。
+今回は約80万件の注文に対して、会員情報を約80万回取得しているため、SQLの実行回数が非常に多くなっている。
+JOINを使って1本のSQLにまとめることで改善できる。
+
+SELECT
+    o.id,
+    o.member_id,
+    o.order_date,
+    o.total_amount,
+    m.name,
+    m.rank,
+    m.region
+FROM orders o
+JOIN members m ON o.member_id = m.id
+WHERE o.order_date BETWEEN '2026-05-01' AND '2026-05-31'
+  AND o.status = '発送済';
+
+【設問2】
+
+ordersはtypeがALLで、3,000万件を全件検索している。
+membersもtypeがALLで、200万件を全件検索している。
+order_itemsはtypeがALLで、9,000万件を全件検索している。
+productsはtypeがALLで、15万件を全件検索している。
+categoriesもtypeがALLだが、200件しかないため、他のテーブルより影響は小さい。
+
+【設問3】
+
+主な問題点は以下の通りである。
+
+ordersが全件検索になっている。
+order_itemsが全件検索になっている。
+JOINに使うカラムのインデックスが不足している。
+GROUP BYやORDER BYによる一時テーブルや並び替え処理が発生している。
+N+1問題によって大量のSQLが実行されている。
+
+【設問4】
+
+優先順位1：N+1問題を解消する。
+注文ごとに会員情報を取得するのではなく、JOINを使って1本のSQLで取得する。
+優先順位2：ordersにorder_dateとstatusの複合インデックスを追加する。
+優先順位3：order_itemsのorder_idにインデックスを追加する。
+優先順位4：JOINに使用するmember_idやproduct_idなどにインデックスを追加する。
+優先順位5：データ量が多いため、サマリーテーブルなどを利用して集計処理を減らす。
+
+【設問5】
+
+CREATE INDEX idx_orders_date_status
+ON orders (order_date, status);
+
+CREATE INDEX idx_orders_member
+ON orders (member_id);
+
+CREATE INDEX idx_order_items_order
+ON order_items (order_id);
+
+CREATE INDEX idx_order_items_product
+ON order_items (product_id);
+
+CREATE INDEX idx_products_category
+ON products (category_id);
+
+【設問6】
+
+インデックスを追加すると、次のように改善すると予測する。
+
+orders：ALL → range
+members：ALL → eq_ref
+order_items：ALL → ref
+products：ALL → eq_ref
+categories：ALL → eq_ref
+
+【設問7】
+
+インデックス以外では、サマリーテーブル、パーティショニング、キャッシュなどを利用できる。
+サマリーテーブルを作って月ごとの売上をあらかじめ集計しておけば、毎回大量のデータを集計する必要がなくなる。
